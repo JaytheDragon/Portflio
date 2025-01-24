@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('./background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+
+        .project {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .project h2 {
+            margin: 0;
+        }
+
+        .project p {
+            margin: 10px 0;
+        }
+
+        .project button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .project button:hover {
+            background-color: #0056b3;
+        }
+
+        .contacts {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contacts h2 {
+            margin: 0 0 10px 0;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jay's Development Portfolio</h1>
+    </header>
+
+    <div class="container" id="project-list">
+        <!-- Project entries will be dynamically added here -->
+    </div>
+
+    <div class="contacts">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="jpak2024@gmail.com" style="color: #007BFF; text-decoration: none;">jpak2024@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/jeongbin-pak-2761381a2/" target="_blank" style="color: #007BFF; text-decoration: none;">linkedin.com/in/jeongbin-pak</a></p>
+    </div>
+
+    <script>
+        // Modular project data
+        const projects = [
+            {
+                name: 'Game Hosting',
+                link: 'http://furry-champions-competition.s3-website.us-east-2.amazonaws.com/',
+                description: 'A simple website hosted on Amazon AWS S3 to get participants through links'
+            },
+            {
+                name: 'Clariant Senior Design Project',
+                link: 'https://gitfront.io/r/jpak2024/w2zHTZdMb1pc/ClariantProject/',
+                description: 'Deployed a web-based game that used Unity and HTML to simulate a Carbon emission game through business actions inside a game'
+            },
+            {
+                name: 'SEEDGuard AI Assistant Research Experience',
+                link: 'https://github.com/SEEDGuard/SEEDConsistencyChecker',
+                description: 'Collaborated with other researchers in a research experience to develop AI software for programmers for automated code review.'
+            },
+            {
+                name: 'Robotic Motion Planning',
+                link: 'https://gitfront.io/r/jay/2wj25KEV5vjb/CSC495-robotic-motion-planning/',
+                description: 'Individually developed and demonstrated robotic motion planning through the use of Python and running rviz through ROS'
+            },
+            {
+                name: 'Software Engineering Project: Coffeemaker',
+                link: 'https://gitfront.io/r/jay/MFkztrokC7ej/CSC326SoftwareEngineering/',
+                description: 'Collaborated with a team to develop a web-based coffeemaker simulation using Java, AngularJS, and Spring Boot.'
+            },
+            {
+                name: '2D Game: Help! I am just a Slime!',
+                link: 'https://www.puzzlescript.net/play.html?p=1b442817e1ab4b95b1863d7f92127628',
+                description: 'Created a 2D game using PuzzleScript and Twine, with interactive stories and puzzles.'
+            },
+            {
+                name: 'Data Structures Project: Cleaning Manager',
+                link: 'https://gitfront.io/r/jay/LZaHat1vsB45/csc316-cleaning-manager/',
+                description: 'Programmed a Cleaning Manager, using Java in conjunction with different data structures that are most suitable '
+            },
+            {
+                name: 'Unreal Game Development: Lamb in the Cradle Game',
+                link: 'https://github.com/gjGameJam/lambInTheCradle',
+                description: 'Collaborated with peers to create an engaging video game using Unity, focusing on gameplay mechanics.'
+            }
+        ];
+
+        const projectList = document.getElementById('project-list');
+
+        function addProject(name, link, description) {
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'project';
+
+            const projectTitle = document.createElement('h2');
+            projectTitle.textContent = name;
+            projectDiv.appendChild(projectTitle);
+
+            const projectDescription = document.createElement('p');
+            projectDescription.textContent = description;
+            projectDiv.appendChild(projectDescription);
+
+            const projectButton = document.createElement('button');
+            projectButton.textContent = 'View Project';
+            projectButton.onclick = () => {
+                window.open(link, '_blank');
+            };
+            projectDiv.appendChild(projectButton);
+
+            projectList.appendChild(projectDiv);
+        }
+
+        // Dynamically load all projects
+        projects.forEach(project => addProject(project.name, project.link, project.description));
+    </script>
+</body>
+</html>
